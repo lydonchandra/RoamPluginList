@@ -62,11 +62,6 @@ class SearchPlugin(widget, base, Page):
         self.project = project
         
     def OpenInExplorer(self):        
-        #QDesktopServices.openUrl(QUrl.fromLocalFile(self.project.basefolder))
-        #ex = Example() 
-        #dlg = QDialog()
-        #dlg.setTooltip (self.project.basefolder)
-        #dlg.exec_()             
         explorerCommand = "explorer \"" + os.path.normpath(self.project.folder) + "\""        
         self.debugLabel.setText(explorerCommand)
         subprocess.call(explorerCommand, shell=True)
