@@ -49,7 +49,11 @@ class SyncClientLogPlugin(widget, base, Page):
         wholeFileAsHtml = ''
         with open(LOG_FILENAME, 'r') as logFile:
             for line in logFile:
-                lineHtml = re.sub(r"^(.*)ERROR(.*)$", "<span style='color:red'>\g<1>ERROR\g<2></span>", line)
+                if 'ERROR' in line:
+                    lineHtml = "<span style='color:red'>{}</span>".format(line)
+                else:
+                    lineHtml = line
+                
                 lineHtml = lineHtml.replace("\n", "<br/>")
                 wholeFileAsHtml = wholeFileAsHtml + lineHtml
 
